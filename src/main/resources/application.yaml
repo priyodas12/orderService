@@ -1,0 +1,33 @@
+#Fri Dec 06 08:04:24 IST 2024
+datasources:
+  default:
+    db-type: postgres
+    dialect: postgres
+    driver-class-name: org.postgresql.Driver
+    username: ${PG_USERNAME}
+    password: ${PG_PASSWORD}
+    url: jdbc:postgresql://localhost:5450/postgres
+    schema-generate: none
+flyway:
+  datasources:
+    default:
+      enabled: true
+      locations: classpath:db/migration
+      baselineOnMigrate: true
+jpa:
+  default:
+    physical_naming_strategy: 'org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl'
+    packages-to-scan: "com.routeMobile.model"
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+      ddl-auto: update
+      show_sql: true
+micronaut:
+  application:
+    name: orderService
+  server:
+    port: 12360
+
+
